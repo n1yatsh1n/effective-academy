@@ -2,3 +2,7 @@ body {
   margin: 0;
   font: 14px "Roboto", sans-serif;
 }
+a {
+  all: unset;
+  cursor: pointer;
+}
