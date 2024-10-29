@@ -13,7 +13,7 @@ const Header = () => {
               className={({ isActive }) =>
                 isActive ? "activeLink" : undefined
               }
-              to="/"
+              to="/characters"
             >
               Characters
             </NavLink>

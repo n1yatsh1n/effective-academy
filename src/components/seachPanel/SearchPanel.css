@@ -1,0 +1,32 @@
+.inputWrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .inputWrapper input {
+    width: 100%;
+    border: 1px solid grey;
+    padding: 0 10px;
+    height: 38px;
+    border-radius: 10px 0 0 10px;
+  }
+  .inputWrapper button {
+    margin-left: 0;
+    height: 40px;
+    border: none;
+    background-color: red;
+    border: 1px solid grey;
+    color: white;
+    border-radius: 0 10px 10px 0;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .inputWrapper button:hover {
+    cursor: pointer;
+    background-color: #b90505;
+    transition: all;
+    transition-duration: 0.5s;
+  }
