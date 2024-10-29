@@ -1,0 +1,117 @@
+[
+  {
+    "id": 1,
+    "img": "supergeroi-chelovek-pauk.jpg",
+    "description": "Bitten by a radioactive spider, Peter Parker gained the abilities of a spider and became Spider-Man. With his newfound powers, Peter Parker dons the mantle of Spider-Man to protect New York City from various threats. Balancing his life as a high school student and a superhero, Spider-Man battles iconic villains such as the Green Goblin, Doctor Octopus, and Venom, while also facing personal challenges and tragedies. Known for his witty banter and relentless determination, Spider-Man remains a beloved and enduring hero in the Marvel Universe.",
+    "name": "Spider-Man",
+    "powers": [
+      "Super strength",
+      "Wall-crawling",
+      "Enhanced agility",
+      "Spider-sense"
+    ],
+    "comics": [
+      {
+        "id": 101,
+        "name": "Amazing Fantasy"
+      },
+      {
+        "id": 102,
+        "name": "The Amazing Spider-Man"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "img": "iron_man.jpg",
+    "description": "Genius inventor Tony Stark creates a suit of powered armor to save his life and become the superhero Iron Man. After being injured and captured by terrorists, Stark uses his intellect and engineering skills to build a suit of armor to escape captivity. Upon returning home, he perfects the suit, becoming Iron Man, and dedicates his life to fighting evil and protecting the world. As both a founding member of the Avengers and a solo hero, Iron Man faces various foes like the Mandarin, Whiplash, and his own personal demons, constantly evolving his technology to stay ahead.",
+    "name": "Iron Man",
+    "powers": [
+      "Genius-level intellect",
+      "Powered armor suit",
+      "Flight",
+      "Energy repulsors"
+    ],
+    "comics": [
+      {
+        "id": 201,
+        "name": "Tales of Suspense"
+      },
+      {
+        "id": 202,
+        "name": "The Invincible Iron Man"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "img": "wonderWoman.jpg",
+    "description": "Amazonian princess Diana of Themyscira fights for justice as Wonder Woman. Raised on the hidden island of Themyscira, Diana is trained as a warrior and imbued with powers by the gods. Leaving her home to help humanity, she adopts the identity of Wonder Woman, a symbol of peace and justice. With her iconic Lasso of Truth, indestructible bracelets, and other mystical artifacts, she battles formidable adversaries like Ares, Cheetah, and Circe. Wonder Woman stands as a symbol of strength, compassion, and equality, often bridging the gap between gods and mortals.",
+    "name": "Wonder Woman",
+    "powers": [
+      "Super strength",
+      "Flight",
+      "Enhanced speed",
+      "Lasso of Truth",
+      "Indestructible bracelets"
+    ],
+    "comics": [
+      {
+        "id": 301,
+        "name": "All Star Comics"
+      },
+      {
+        "id": 302,
+        "name": "Wonder Woman"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "img": "batman.jpg",
+    "description": "Bruce Wayne, a wealthy businessman, fights crime as Batman using his intellect, physical prowess, and an array of gadgets. Traumatized by the murder of his parents, young Bruce Wayne vows to rid Gotham City of the criminal elements that took their lives. After years of intense training and preparation, he becomes Batman, a fearsome vigilante. With the help of allies like Robin, Alfred, and Commissioner Gordon, Batman battles a rogue's gallery of villains, including the Joker, Two-Face, and the Penguin. Known as the Dark Knight, Batman is a symbol of fear for criminals and hope for the innocent.",
+    "name": "Batman",
+    "powers": [
+      "Genius-level intellect",
+      "Peak human conditioning",
+      "Expert detective",
+      "Master martial artist",
+      "High-tech gadgets"
+    ],
+    "comics": [
+      {
+        "id": 401,
+        "name": "Detective Comics"
+      },
+      {
+        "id": 402,
+        "name": "Batman"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "img": "superman.jpg",
+    "description": "Born on the planet Krypton, Kal-El was sent to Earth as a baby, where he grew up to become Superman, the world's greatest superhero. Raised by the Kents in Smallville, Kansas, Clark Kent learns to control his extraordinary abilities and vows to use them for good. As Superman, he protects Metropolis and the world from threats like Lex Luthor, General Zod, and Doomsday. With his unwavering moral compass, Superman embodies the ideals of truth, justice, and hope, serving as an inspiration to both humans and fellow superheroes.",
+    "name": "Superman",
+    "powers": [
+      "Super strength",
+      "Flight",
+      "Invulnerability",
+      "Heat vision",
+      "X-ray vision",
+      "Super speed",
+      "Super breath"
+    ],
+    "comics": [
+      {
+        "id": 501,
+        "name": "Action Comics"
+      },
+      {
+        "id": 502,
+        "name": "Superman"
+      }
+    ]
+  }
+]

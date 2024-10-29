@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  font: 14px "Roboto", sans-serif;
+}
+a {
+  all: unset;
+  cursor: pointer;
+}
+main {
+  min-height: calc(100vh - 200px);
+}
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+}
