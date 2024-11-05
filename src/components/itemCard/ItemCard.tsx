@@ -2,12 +2,6 @@ import { Link } from "react-router-dom";
 import { IItem } from "../../types/types";
 import "./ItemCard.css";
 const ItemCard: React.FC<IItem> = (props) => {
-  const imgLink =
-    props.type === "characters"
-      ? "charactersImages/"
-      : props.type === "comics"
-      ? "comicsImages/"
-      : null;
   return (
     <Link
       to={
@@ -21,7 +15,7 @@ const ItemCard: React.FC<IItem> = (props) => {
     >
       <div
         className="cardFront"
-        style={{ backgroundImage: `url(src/assets/${imgLink}${props.img})` }}
+        style={{ backgroundImage: `url(${props.img})` }}
       >
         <h1>{props.name}</h1>
       </div>
