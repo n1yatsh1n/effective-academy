@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import api from "../api";
-import { ICharacter } from "../types/types";
+import { ICharacter, ICharacterSearchParams } from "../types/types";
 
 class CharactersStore {
   characters: ICharacter[] = [];
@@ -10,11 +10,10 @@ class CharactersStore {
     makeAutoObservable(this);
   }
 
-  getCharactersList = async (): Promise<void> => {
+  getCharactersList = async (params: ICharacterSearchParams): Promise<void> => {
     try {
       this.loading = true;
-
-      const charactersData = await api.characters.getCharactersList();
+      const charactersData = await api.characters.getCharactersList(params);
       const characters = charactersData.data.results;
       console.log(characters);
       runInAction(() => {

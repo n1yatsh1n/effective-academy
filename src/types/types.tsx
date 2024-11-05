@@ -109,3 +109,16 @@ export type IItem = {
   description: string;
   type: string;
 };
+
+export type ICharacterSearchParams = {
+  name?: string;
+  nameStartsWith?: string;
+  modifiedSince?: string;
+  comics?: string;
+  series?: string;
+  events?: string;
+  stories?: string;
+  orderBy?: string;
+  offset?: number;
+  limit?: number;
+};

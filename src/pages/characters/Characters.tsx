@@ -9,28 +9,35 @@ const Characters: FC = () => {
   const { characters, loading } = charactersStore;
 
   useEffect(() => {
-    charactersStore.getCharactersList();
+    charactersStore.getCharactersList({});
   }, []);
   return (
     <>
-      {loading && <h1>Loading...</h1>}
       <div className="titleWrapper">
         <h1>Characters</h1>
         <p>({characters.length})</p>
       </div>
-      <SearchPanel placeholder="Search characters" />
-      <div className="cardContainer">
-        {characters.map((character) => (
-          <ItemCard
-            key={character.id}
-            id={character.id}
-            name={character.name}
-            description={character.description}
-            img={character.thumbnail.path + "." + character.thumbnail.extension}
-            type="characters"
-          />
-        ))}
-      </div>
+      <SearchPanel placeholder="Search characters" type="characters" />
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : characters.length > 0 ? (
+        <div className="cardContainer">
+          {characters.map((character) => (
+            <ItemCard
+              key={character.id}
+              id={character.id}
+              name={character.name}
+              description={character.description}
+              img={
+                character.thumbnail.path + "." + character.thumbnail.extension
+              }
+              type="characters"
+            />
+          ))}
+        </div>
+      ) : (
+        <h1>No characters found</h1>
+      )}
     </>
   );
 };
