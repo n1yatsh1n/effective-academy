@@ -12,7 +12,3 @@ const instance = axios.create({
 });
 
 export default instance;
-
-//https://gateway.marvel.com:443/v1/public/characters?apikey=3dbcf9b60e56a5fe5e322b5cd7a4449c
-
-//https://gateway.marvel.com/v1/public/characters?apikey=3dbcf9b60e56a5fe5e322b5cd7a4449c

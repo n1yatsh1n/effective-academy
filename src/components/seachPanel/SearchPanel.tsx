@@ -11,6 +11,7 @@ interface SearchPanelProps {
 const SearchPanel = ({ placeholder, type }: SearchPanelProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedQuery = useDebounce<string>(searchTerm, 1500);
+  const [isChange, setIsChange] = useState(false);
 
   const sendRequest = useCallback(
     (searchQuery: string): void => {
@@ -24,10 +25,13 @@ const SearchPanel = ({ placeholder, type }: SearchPanelProps) => {
   );
 
   useEffect(() => {
-    sendRequest(debouncedQuery);
-  }, [debouncedQuery, sendRequest]);
+    if (isChange) {
+      sendRequest(debouncedQuery);
+    }
+  }, [debouncedQuery, sendRequest, isChange]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsChange(true);
     setSearchTerm(e.target.value);
   };
 
