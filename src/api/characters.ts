@@ -13,7 +13,6 @@ export default {
 
   async getCharacter(id: number) {
     const response = await axios.get(`/characters/${id}`);
-    console.log(response.data);
     return response.data;
   },
 };

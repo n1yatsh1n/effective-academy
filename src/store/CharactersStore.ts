@@ -4,6 +4,7 @@ import { ICharacter, ICharacterSearchParams } from "../types/types";
 
 class CharactersStore {
   characters: ICharacter[] = [];
+  currentCharacter: number | null = null;
   loading: boolean = false;
 
   constructor() {
@@ -27,6 +28,11 @@ class CharactersStore {
       });
     }
   };
+
+  setCurrentCharacter = (character: number) => {
+    this.currentCharacter = character;
+  };
+
 }
 
 const charactersStore = new CharactersStore();

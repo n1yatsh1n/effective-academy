@@ -1,8 +1,8 @@
-import { Link, useParams } from "react-router-dom";
-import characters from "../../constants/characters.json";
-import "./CharacterPage.css";
-import { ICharacter } from "../../types/types";
 import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import api from "../../api";
+import { ICharacter } from "../../types/types";
+import "./CharacterPage.css";
 
 const CharacterPage = () => {
   const { id } = useParams();
@@ -10,16 +10,12 @@ const CharacterPage = () => {
     null
   );
 
-  const getCharacterById = (id: number | undefined) => {
+  const getCharacterById = async (id: number | undefined) => {
     if (id !== undefined) {
-      const character: ICharacter | undefined = characters.find(
-        (char) => char.id === id
-      );
-      if (character) {
-        setSelectedCharacter(character);
-      } else {
-        setSelectedCharacter(null);
-      }
+      await api.characters.getCharacter(id).then((res) => {
+        setSelectedCharacter(res.data.results[0]);
+        console.log(res.data.results[0]);
+      });
     } else {
       setSelectedCharacter(null);
     }
@@ -36,35 +32,34 @@ const CharacterPage = () => {
       </button>
       <img
         className="characterImg"
-        src={"../src/assets/charactersImages/" + selectedCharacter?.img}
+        src={
+          selectedCharacter?.thumbnail.path +
+          "." +
+          selectedCharacter?.thumbnail.extension
+        }
         alt={selectedCharacter?.name}
       />
       <div className="characterContent">
         <div className="characterInfo">
           <h1>{selectedCharacter?.name}</h1>
           <p className="characterDescription">
-            {selectedCharacter?.description}
+            {selectedCharacter?.description
+              ? selectedCharacter.description
+              : "No description"}
           </p>
-          {selectedCharacter && (
-            <div className="powersList">
-              <h2>Powers</h2>
-              {selectedCharacter.powers.map((power) => (
-                <p className="characterPower">- {power}</p>
-              ))}
-            </div>
-          )}
         </div>
         <div className="comicsList">
-          <h2>Comics</h2>
-          {selectedCharacter?.comics.map((comic) => (
-            <Link
-              to={"/comics/" + comic.id}
-              key={comic.id}
-              className="comicsItem"
-            >
-              <p>- {comic.name}</p>
-            </Link>
-          ))}
+          <h2>Comics ({selectedCharacter?.comics.returned})</h2>
+          {selectedCharacter?.comics?.items &&
+            selectedCharacter.comics.items.map((comic) => (
+              <Link
+                to={"/comics/" + comic.resourceURI?.split("/")[6]}
+                key={comic.resourceURI?.split("/")[6]}
+                className="comicsItem"
+              >
+                <p>- {comic.name}</p>
+              </Link>
+            ))}
         </div>
       </div>
     </div>

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { IItem } from "../../types/types";
 import "./ItemCard.css";
+import charactersStore from "../../store/CharactersStore";
 const ItemCard: React.FC<IItem> = (props) => {
+  const { setCurrentCharacter } = charactersStore;
   return (
     <Link
       to={
@@ -11,6 +13,11 @@ const ItemCard: React.FC<IItem> = (props) => {
           ? "/comics/" + props.id
           : "/"
       }
+      onClick={() => {
+        if (props.type === "characters") {
+          setCurrentCharacter(props.id);
+        }
+      }}
       className="cardWrapper"
     >
       <div
