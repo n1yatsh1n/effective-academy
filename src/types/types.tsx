@@ -122,3 +122,125 @@ export type ICharacterSearchParams = {
   offset?: number;
   limit?: number;
 };
+
+export type IComicDataWrapper = {
+  code: number;
+  status: string;
+  copyright: string;
+  attributionText: string;
+  attributionHTML: string;
+  data: IComicDataContainer;
+  etag: string;
+};
+
+export type IComicDataContainer = {
+  offset?: number;
+  limit?: number;
+  total?: number;
+  count?: number;
+  results: IComic[];
+};
+
+export type IComic = {
+  id: number;
+  digitalId?: number;
+  title: string;
+  issueNumber?: number;
+  variantDescription?: string;
+  description: string;
+  modified?: Date;
+  isbn?: string;
+  upc?: string;
+  diamondCode?: string;
+  ean?: string;
+  issn?: string;
+  format?: string;
+  pageCount?: number;
+  textObjects?: ITextObject[];
+  resourceURI?: string;
+  urls?: IUrl[];
+  series?: ISeriesSummary;
+  variants?: IComicSummary[];
+  collections?: IComicSummary[];
+  collectedIssues?: IComicSummary[];
+  dates?: IComicDate[];
+  prices?: IComicPrice[];
+  thumbnail: IImage;
+  images?: IImage[];
+  creators?: ICreatorList;
+  characters?: ICharacterList;
+  stories?: IStoryList;
+  events?: IEventList;
+};
+
+export type ITextObject = {
+  type?: string;
+  language?: string;
+  text?: string;
+};
+
+export type IComicDate = {
+  type?: string;
+  date?: Date;
+};
+
+export type IComicPrice = {
+  type?: string;
+  price?: number;
+};
+
+export type ICreatorList = {
+  available?: number;
+  returned?: number;
+  collectionURI?: string;
+  items?: ICreatorSummary[];
+};
+
+export type ICreatorSummary = {
+  resourceURI?: string;
+  name?: string;
+  role?: string;
+};
+
+export type ICharacterList = {
+  available?: number;
+  returned?: number;
+  collectionURI?: string;
+  items?: ICharacterSummary[];
+};
+
+export type ICharacterSummary = {
+  resourceURI?: string;
+  name?: string;
+  role?: string;
+};
+
+export type IComicSearchParams = {
+  format?: string;
+  formatType?: string;
+  noVariants?: boolean;
+  dateDescriptor?: string;
+  dateRange?: string;
+  title?: string;
+  titleStartsWith?: string;
+  startYear?: string;
+  issueNumber?: string;
+  diamondCode?: string;
+  digitalId?: string;
+  upc?: string;
+  isbn?: string;
+  ean?: string;
+  issn?: string;
+  hasDigitalIssue?: boolean;
+  modifiedSince?: string;
+  creators?: string;
+  characters?: string;
+  series?: string;
+  events?: string;
+  stories?: string;
+  sharedAppearances?: string;
+  collaborators?: string;
+  orderBy?: string;
+  offset?: number;
+  limit?: number;
+};
