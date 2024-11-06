@@ -1,23 +1,19 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { IComics } from "../../types/types";
-import comicsMap from "../../constants/comics.json";
+import api from "../../api";
+import { IComic } from "../../types/types";
 import "./ComicsPage.css";
 
 const ComicsPage = () => {
   const { id } = useParams();
-  const [selectedComics, setSelectedComics] = useState<IComics | null>(null);
+  const [selectedComics, setSelectedComics] = useState<IComic | null>(null);
 
-  const getComicsById = (id: number | undefined) => {
+  const getComicsById = async (id: number | undefined) => {
     if (id !== undefined) {
-      const comicsItem: IComics | undefined = comicsMap.find(
-        (char) => char.id === id
-      );
-      if (comicsItem) {
-        setSelectedComics(comicsItem);
-      } else {
-        setSelectedComics(null);
-      }
+      await api.comics.getComic(id).then((res) => {
+        setSelectedComics(res.data.results[0]);
+        console.log(res.data.results[0]);
+      });
     } else {
       setSelectedComics(null);
     }
@@ -25,7 +21,7 @@ const ComicsPage = () => {
 
   useEffect(() => {
     getComicsById(Number(id));
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -34,20 +30,37 @@ const ComicsPage = () => {
       </button>
       <img
         className="comicsImg"
-        src={"../src/assets/comicsImages/" + selectedComics?.img}
+        src={
+          selectedComics?.thumbnail.path +
+          "." +
+          selectedComics?.thumbnail.extension
+        }
       />
       <div className="comicsContent">
         <div className="comicsInfo">
-          <h1>{selectedComics?.name}</h1>
-          <p>{selectedComics?.description}</p>
+          <h1>{selectedComics?.title}</h1>
+          {selectedComics?.description ? (
+            <p>{selectedComics?.description}</p>
+          ) : (
+            <p>No description</p>
+          )}
         </div>
         <div className="charactersList">
           <h2>Characters</h2>
-          {selectedComics?.characters.map((char) => (
-            <Link to={"/characters/" + char.id} key={char.id} className="characterItem">
-              <p>- {char.name}</p>
-            </Link>
-          ))}
+          {selectedComics?.characters?.returned &&
+          selectedComics?.characters?.returned > 0 ? (
+            selectedComics?.characters?.items?.map((char) => (
+              <Link
+                to={"/characters/" + char.resourceURI?.split("/")[6]}
+                key={char.resourceURI?.split("/")[6]}
+                className="characterItem"
+              >
+                <p>- {char.name}</p>
+              </Link>
+            ))
+          ) : (
+            <p>No characters</p>
+          )}
         </div>
       </div>
     </div>
