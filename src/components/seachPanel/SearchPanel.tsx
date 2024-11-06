@@ -21,9 +21,13 @@ const SearchPanel = ({ placeholder, type }: SearchPanelProps) => {
           searchQuery ? { nameStartsWith: searchQuery } : {}
         );
       } else if (type === "comics") {
-        comicsStore.getComicsList({
-          titleStartsWith: searchQuery,
-        });
+        comicsStore.getComicsList(
+          searchQuery
+            ? {
+                titleStartsWith: searchQuery,
+              }
+            : {}
+        );
       }
     },
     [type]
