@@ -10,7 +10,7 @@ const Characters: FC = () => {
   const { characters, loading, characterDataContainer } = charactersStore;
 
   useEffect(() => {
-    charactersStore.getCharactersList({});
+    charactersStore.getCharactersList();
   }, []);
   return (
     <>

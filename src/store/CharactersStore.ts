@@ -17,16 +17,17 @@ class CharactersStore {
   };
   currentCharacter: number | null = null;
   loading: boolean = false;
+  params: ICharacterSearchParams = {};
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  getCharactersList = async (params: ICharacterSearchParams): Promise<void> => {
+  getCharactersList = async (): Promise<void> => {
     try {
       this.loading = true;
       const charactersDataWrapper = await api.characters.getCharactersList(
-        params
+        this.params
       );
       const characters = charactersDataWrapper.data.results;
       const characterDataContainer = charactersDataWrapper.data;

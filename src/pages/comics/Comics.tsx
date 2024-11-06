@@ -9,7 +9,7 @@ const Comics: FC = () => {
   const { comics, loading, comicsDataContainer } = comicsStore;
 
   useEffect(() => {
-    comicsStore.getComicsList({});
+    comicsStore.getComicsList();
   }, []);
 
   return (

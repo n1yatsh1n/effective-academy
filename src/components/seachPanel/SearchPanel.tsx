@@ -17,17 +17,19 @@ const SearchPanel = ({ placeholder, type }: SearchPanelProps) => {
   const sendRequest = useCallback(
     (searchQuery: string): void => {
       if (type === "characters") {
-        charactersStore.getCharactersList(
-          searchQuery ? { nameStartsWith: searchQuery } : {}
-        );
+        if (searchQuery) {
+          charactersStore.params.nameStartsWith = searchQuery;
+        } else {
+          charactersStore.params = {};
+        }
+        charactersStore.getCharactersList();
       } else if (type === "comics") {
-        comicsStore.getComicsList(
-          searchQuery
-            ? {
-                titleStartsWith: searchQuery,
-              }
-            : {}
-        );
+        if (searchQuery) {
+          comicsStore.params.titleStartsWith = searchQuery;
+        } else {
+          comicsStore.params = {};
+        }
+        comicsStore.getComicsList();
       }
     },
     [type]
@@ -40,6 +42,11 @@ const SearchPanel = ({ placeholder, type }: SearchPanelProps) => {
   }, [debouncedQuery, sendRequest, isChange]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (type === "characters") {
+      charactersStore.params.offset = undefined;
+    } else if (type === "comics") {
+      comicsStore.params.offset = undefined;
+    }
     setIsChange(true);
     setSearchTerm(e.target.value);
   };

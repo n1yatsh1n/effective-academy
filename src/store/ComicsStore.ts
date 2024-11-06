@@ -16,15 +16,16 @@ class ComicsStore {
     results: [],
   };
   loading: boolean = false;
+  params: IComicSearchParams = {};
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  getComicsList = async (params: IComicSearchParams): Promise<void> => {
+  getComicsList = async (): Promise<void> => {
     try {
       this.loading = true;
-      const comicsDataWrapper = await api.comics.getComicsList(params);
+      const comicsDataWrapper = await api.comics.getComicsList(this.params);
       const comics = comicsDataWrapper.data.results;
       const comicsDataContainer = comicsDataWrapper.data;
       runInAction(() => {

@@ -22,13 +22,12 @@ const Pagination: React.FC<PaginationProps> = ({
   const handlePrevious = () => {
     if (Math.floor(offset / limit) > 0) {
       if (type === "characters") {
-        charactersStore.getCharactersList({
-          offset: (Math.floor(offset / limit) - 1) * limit,
-        });
+        charactersStore.params.offset =
+          (Math.floor(offset / limit) - 1) * limit;
+        charactersStore.getCharactersList();
       } else if (type === "comics") {
-        comicsStore.getComicsList({
-          offset: (Math.floor(offset / limit) - 1) * limit,
-        });
+        comicsStore.params.offset = (Math.floor(offset / limit) - 1) * limit;
+        comicsStore.getComicsList();
       }
     }
   };
@@ -36,13 +35,12 @@ const Pagination: React.FC<PaginationProps> = ({
   const handleNext = () => {
     if (Math.floor(offset / limit) < totalPages) {
       if (type === "characters") {
-        charactersStore.getCharactersList({
-          offset: (Math.floor(offset / limit) + 1) * limit,
-        });
+        charactersStore.params.offset =
+          (Math.floor(offset / limit) + 1) * limit;
+        charactersStore.getCharactersList();
       } else if (type === "comics") {
-        comicsStore.getComicsList({
-          offset: (Math.floor(offset / limit) + 1) * limit,
-        });
+        comicsStore.params.offset = (Math.floor(offset / limit) + 1) * limit;
+        comicsStore.getComicsList();
       }
     }
   };
@@ -57,7 +55,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {"<"}
       </button>
       <span className="paginationText">{` Страница ${
-       total > 0? Math.floor(offset / limit) + 1 : 0
+        total > 0 ? Math.floor(offset / limit) + 1 : 0
       } из ${totalPages}`}</span>
       <button
         className="paginationButton"
