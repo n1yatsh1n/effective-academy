@@ -3,9 +3,10 @@ import ItemCard from "../../components/itemCard/ItemCard";
 import SearchPanel from "../../components/seachPanel/SearchPanel";
 import { observer } from "mobx-react-lite";
 import comicsStore from "../../store/ComicsStore";
+import Pagination from "../../components/Pagination/Pagination";
 
 const Comics: FC = () => {
-  const { comics, loading } = comicsStore;
+  const { comics, loading, comicsDataContainer } = comicsStore;
 
   useEffect(() => {
     comicsStore.getComicsList({});
@@ -21,18 +22,26 @@ const Comics: FC = () => {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div className="cardContainer">
-          {comics.map((comics) => (
-            <ItemCard
-              key={comics.id}
-              id={comics.id}
-              name={comics.title}
-              description={comics.description}
-              img={comics.thumbnail.path + "." + comics.thumbnail.extension}
-              type="comics"
-            />
-          ))}
-        </div>
+        <>
+          <div className="cardContainer">
+            {comics.map((comics) => (
+              <ItemCard
+                key={comics.id}
+                id={comics.id}
+                name={comics.title}
+                description={comics.description}
+                img={comics.thumbnail.path + "." + comics.thumbnail.extension}
+                type="comics"
+              />
+            ))}
+          </div>
+          <Pagination
+            total={comicsDataContainer.total}
+            limit={comicsDataContainer.limit}
+            offset={comicsDataContainer.offset}
+            type="comics"
+          />
+        </>
       )}
     </>
   );

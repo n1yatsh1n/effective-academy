@@ -134,10 +134,10 @@ export type IComicDataWrapper = {
 };
 
 export type IComicDataContainer = {
-  offset?: number;
-  limit?: number;
-  total?: number;
-  count?: number;
+  offset: number;
+  limit: number;
+  total: number;
+  count: number;
   results: IComic[];
 };
 

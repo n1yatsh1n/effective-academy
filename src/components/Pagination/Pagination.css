@@ -1,0 +1,32 @@
+.paginationWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.paginationButton {
+  background-color: red;
+  color: white;
+  border-color: white;
+  font-size: 24px;
+  border-radius: 6px;
+  padding: 5px 12px;
+  transition: all 0.3s;
+}
+
+.paginationButton:disabled {
+  background-color: rgba(250, 0, 0, 0.552);
+  cursor: not-allowed;
+}
+.paginationButton:not(:disabled):hover {
+  background-color: rgb(129, 0, 0);
+}
+
+.paginationText {
+  font-size: 20px;
+  margin-left: 8px;
+  margin-right: 8px;
+  font-weight: 500;
+}

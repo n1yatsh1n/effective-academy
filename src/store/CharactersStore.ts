@@ -1,9 +1,20 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import api from "../api";
-import { ICharacter, ICharacterSearchParams } from "../types/types";
+import {
+  ICharacter,
+  ICharacterDataContainer,
+  ICharacterSearchParams,
+} from "../types/types";
 
 class CharactersStore {
   characters: ICharacter[] = [];
+  characterDataContainer: ICharacterDataContainer = {
+    offset: 0,
+    limit: 0,
+    total: 0,
+    count: 0,
+    results: [],
+  };
   currentCharacter: number | null = null;
   loading: boolean = false;
 
@@ -14,11 +25,14 @@ class CharactersStore {
   getCharactersList = async (params: ICharacterSearchParams): Promise<void> => {
     try {
       this.loading = true;
-      const charactersData = await api.characters.getCharactersList(params);
-      const characters = charactersData.data.results;
-      console.log(characters);
+      const charactersDataWrapper = await api.characters.getCharactersList(
+        params
+      );
+      const characters = charactersDataWrapper.data.results;
+      const characterDataContainer = charactersDataWrapper.data;
       runInAction(() => {
         this.characters = characters;
+        this.characterDataContainer = characterDataContainer;
       });
     } catch (error) {
       console.error(error);
@@ -32,7 +46,6 @@ class CharactersStore {
   setCurrentCharacter = (character: number) => {
     this.currentCharacter = character;
   };
-
 }
 
 const charactersStore = new CharactersStore();

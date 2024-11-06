@@ -1,9 +1,20 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import api from "../api";
-import { IComic, IComicSearchParams } from "../types/types";
+import {
+  IComic,
+  IComicDataContainer,
+  IComicSearchParams,
+} from "../types/types";
 
 class ComicsStore {
   comics: IComic[] = [];
+  comicsDataContainer: IComicDataContainer = {
+    offset: 0,
+    limit: 0,
+    total: 0,
+    count: 0,
+    results: [],
+  };
   loading: boolean = false;
 
   constructor() {
@@ -13,10 +24,12 @@ class ComicsStore {
   getComicsList = async (params: IComicSearchParams): Promise<void> => {
     try {
       this.loading = true;
-      const comicsData = await api.comics.getComicsList(params);
-      const comics = comicsData.data.results;
+      const comicsDataWrapper = await api.comics.getComicsList(params);
+      const comics = comicsDataWrapper.data.results;
+      const comicsDataContainer = comicsDataWrapper.data;
       runInAction(() => {
         this.comics = comics;
+        this.comicsDataContainer = comicsDataContainer;
       });
     } catch (error) {
       console.error(error);

@@ -4,9 +4,10 @@ import ItemCard from "../../components/itemCard/ItemCard";
 import SearchPanel from "../../components/seachPanel/SearchPanel";
 import charactersStore from "../../store/CharactersStore";
 import "./Characters.css";
+import Pagination from "../../components/Pagination/Pagination";
 
 const Characters: FC = () => {
-  const { characters, loading } = charactersStore;
+  const { characters, loading, characterDataContainer } = charactersStore;
 
   useEffect(() => {
     charactersStore.getCharactersList({});
@@ -21,20 +22,28 @@ const Characters: FC = () => {
       {loading ? (
         <h1>Loading...</h1>
       ) : characters.length > 0 ? (
-        <div className="cardContainer">
-          {characters.map((character) => (
-            <ItemCard
-              key={character.id}
-              id={character.id}
-              name={character.name}
-              description={character.description}
-              img={
-                character.thumbnail.path + "." + character.thumbnail.extension
-              }
-              type="characters"
-            />
-          ))}
-        </div>
+        <>
+          <div className="cardContainer">
+            {characters.map((character) => (
+              <ItemCard
+                key={character.id}
+                id={character.id}
+                name={character.name}
+                description={character.description}
+                img={
+                  character.thumbnail.path + "." + character.thumbnail.extension
+                }
+                type="characters"
+              />
+            ))}
+          </div>
+          <Pagination
+            total={characterDataContainer.total}
+            limit={characterDataContainer.limit}
+            offset={characterDataContainer.offset}
+            type="characters"
+          />
+        </>
       ) : (
         <h1>No characters found</h1>
       )}
