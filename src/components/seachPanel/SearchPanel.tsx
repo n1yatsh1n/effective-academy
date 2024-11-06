@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import charactersStore from "../../store/CharactersStore";
 import "./SearchPanel.css";
 import useDebounce from "../../hooks/useDebounce";
+import comicsStore from "../../store/ComicsStore";
 
 interface SearchPanelProps {
   placeholder: string;
@@ -19,6 +20,10 @@ const SearchPanel = ({ placeholder, type }: SearchPanelProps) => {
         charactersStore.getCharactersList(
           searchQuery ? { nameStartsWith: searchQuery } : {}
         );
+      } else if (type === "comics") {
+        comicsStore.getComicsList({
+          titleStartsWith: searchQuery,
+        });
       }
     },
     [type]
