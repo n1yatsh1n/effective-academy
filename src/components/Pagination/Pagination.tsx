@@ -57,7 +57,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {"<"}
       </button>
       <span className="paginationText">{` Страница ${
-        Math.floor(offset / limit) + 1
+       total > 0? Math.floor(offset / limit) + 1 : 0
       } из ${totalPages}`}</span>
       <button
         className="paginationButton"
