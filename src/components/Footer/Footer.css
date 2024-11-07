@@ -1,0 +1,40 @@
+.footerWrapper {
+  width: 100%;
+  background: gray;
+  height: 100px;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+}
+.footerContent {
+  display: flex;
+}
+.footerLogo {
+  height: 100px;
+}
+.footerTextWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+}
+.footerText {
+  color: white;
+  font-size: 16px;
+  margin: 0;
+  padding: 4px;
+  font-weight: 500;
+}
+.footerLink {
+  color: white;
+  font-size: 16px;
+  margin: 0;
+  padding: 4px;
+  font-weight: 500;
+}
+.footerLink:hover {
+  text-decoration: underline;
+  color: red;
+}
