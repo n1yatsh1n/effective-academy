@@ -58,3 +58,16 @@
   transform: rotateY(180deg);
   z-index: -1;
 }
+.readMore {
+  background-color: red;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid white;
+  font-weight: bold;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.readMore:hover {
+  background-color: darkred;
+  box-shadow: 0 4px 15px rgba(194, 194, 194, 0.5);
+}

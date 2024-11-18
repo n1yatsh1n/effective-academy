@@ -24,17 +24,7 @@ const ItemCard: React.FC<IItem> = (props) => {
   };
 
   return (
-    <Link
-      to={
-        props.type === "characters"
-          ? "/characters/" + props.id
-          : props.type === "comics"
-          ? "/comics/" + props.id
-          : "/"
-      }
-      onClick={handleClick}
-      className="cardWrapper"
-    >
+    <div className="cardWrapper">
       <div
         className="cardFront"
         style={{ backgroundImage: `url(${props.img})` }}
@@ -48,9 +38,21 @@ const ItemCard: React.FC<IItem> = (props) => {
         ) : (
           <p className="favoriteStatus">Этот элемент не в избранном</p>
         )}
-        <p className="readMore">Read more...</p>
+        <Link
+          to={
+            props.type === "characters"
+              ? "/characters/" + props.id
+              : props.type === "comics"
+              ? "/comics/" + props.id
+              : "/"
+          }
+          onClick={handleClick}
+          className="readMore"
+        >
+          Read more...
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 };
 
