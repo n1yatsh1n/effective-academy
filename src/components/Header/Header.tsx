@@ -18,12 +18,21 @@ const Header = () => {
               Characters
             </NavLink>
             <NavLink
+              style={{ marginRight: "10px" }}
               className={({ isActive }) =>
                 isActive ? "activeLink" : undefined
               }
               to="/comics"
             >
               Comics
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "activeLink" : undefined
+              }
+              to="/favourites"
+            >
+              Favourites
             </NavLink>
           </nav>
         </div>
