@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 import { IItem } from "../../types/types";
 import "./ItemCard.css";
-import charactersStore from "../../store/CharactersStore";
 const ItemCard: React.FC<IItem> = (props) => {
-  const { setCurrentCharacter } = charactersStore;
+  const handleClick = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    const exists = favorites.some((item: IItem) => item.id === props.id);
+
+    if (!exists) {
+      favorites.push(props);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+  };
   return (
     <Link
       to={
@@ -13,11 +21,7 @@ const ItemCard: React.FC<IItem> = (props) => {
           ? "/comics/" + props.id
           : "/"
       }
-      onClick={() => {
-        if (props.type === "characters") {
-          setCurrentCharacter(props.id);
-        }
-      }}
+      onClick={handleClick}
       className="cardWrapper"
     >
       <div

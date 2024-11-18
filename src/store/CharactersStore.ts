@@ -15,7 +15,6 @@ class CharactersStore {
     count: 0,
     results: [],
   };
-  currentCharacter: number | null = null;
   loading: boolean = false;
   params: ICharacterSearchParams = {};
 
@@ -42,10 +41,6 @@ class CharactersStore {
         this.loading = false;
       });
     }
-  };
-
-  setCurrentCharacter = (character: number) => {
-    this.currentCharacter = character;
   };
 }
 
