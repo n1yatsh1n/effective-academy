@@ -20,6 +20,13 @@ const ItemCard: React.FC<IItem> = (props) => {
       favorites.push(props);
       localStorage.setItem("favorites", JSON.stringify(favorites));
       setIsFavorite(true);
+    } else {
+      const newFavorites = favorites.filter(
+        (item: IItem) => item.id !== props.id
+      );
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+      setIsFavorite(false);
+      if (props.onRemove) props.onRemove(props.id);
     }
   };
 
@@ -32,12 +39,13 @@ const ItemCard: React.FC<IItem> = (props) => {
         <h1>{props.name}</h1>
       </div>
       <div className="cardBack">
-        <p>{props.description}</p>
-        {isFavorite ? (
-          <p className="favoriteStatus">Этот элемент в избранном</p>
-        ) : (
-          <p className="favoriteStatus">Этот элемент не в избранном</p>
-        )}
+        <div
+          className={`heartIcon ${isFavorite ? "filled" : ""}`}
+          onClick={handleClick}
+        >
+          ❤
+        </div>
+        <p className="description">{props.description}</p>
         <Link
           to={
             props.type === "characters"
@@ -46,7 +54,6 @@ const ItemCard: React.FC<IItem> = (props) => {
               ? "/comics/" + props.id
               : "/"
           }
-          onClick={handleClick}
           className="readMore"
         >
           Read more...

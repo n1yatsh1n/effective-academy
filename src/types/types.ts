@@ -108,6 +108,7 @@ export type IItem = {
   img: string;
   description: string;
   type: string;
+  onRemove?: (id: number) => void;
 };
 
 export type ICharacterSearchParams = {

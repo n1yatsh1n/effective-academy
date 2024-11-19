@@ -1,11 +1,17 @@
-import React from "react";
-import { IItem } from "../../types/types"; 
+import React, { useState } from "react";
+import { IItem } from "../../types/types";
 import ItemCard from "../../components/itemCard/ItemCard";
 
 const Favourites: React.FC = () => {
-  const favorites: IItem[] = JSON.parse(
-    localStorage.getItem("favorites") || "[]"
-  );
+  const [favorites, setFavorites] = useState<IItem[]>(() => {
+    return JSON.parse(localStorage.getItem("favorites") || "[]");
+  });
+
+  const removeFavorite = (id: number) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.filter((item) => item.id !== id)
+    );
+  };
 
   return (
     <div>
@@ -25,6 +31,7 @@ const Favourites: React.FC = () => {
               description={item.description}
               img={item.img}
               type={item.type}
+              onRemove={removeFavorite}
             />
           ))}
         </div>

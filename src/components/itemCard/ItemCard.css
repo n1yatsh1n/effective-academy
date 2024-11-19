@@ -71,3 +71,26 @@
   background-color: darkred;
   box-shadow: 0 4px 15px rgba(194, 194, 194, 0.5);
 }
+.heartIcon {
+  font-size: 24px;
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 5px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.heartIcon.filled {
+  background-color: #f00;
+  color: #fff;
+}
+.heartIcon:hover {
+  background-color: darkred;
+  box-shadow: 0 4px 15px rgba(194, 194, 194, 0.5);
+}
+.description {
+  margin-top: 10%;
+}
