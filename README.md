@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# Marvel App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Это React приложение, которое предоставляет информацию о героях и комиксах из вселенной Marvel. Вы можете просматривать список героев, узнавать о их способностях и взаимодействовать с комиксами.
 
-Currently, two official plugins are available:
+## Установка
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Клонируйте репозиторий:**
 
-## Expanding the ESLint configuration
+   ```commandline
+   git clone https://github.com/n1yatsh1n/effective-academy.git
+   cd effective-academy
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **Установите зависимости:**
 
-- Configure the top-level `parserOptions` property like this:
+   ```commandline
+   npm install
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Запуск
+
+Для запуска приложения в режиме разработки используйте команду:
+
+```commandline
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+После этого приложение будет доступно по умолчанию на [http://localhost:5173](http://localhost:5173).
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Сборка
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Для сборки приложения выполните команду:
+
+```commandline
+npm run build
 ```
+
+Это создаст оптимизированную версию вашего приложения в папке \`dist\`.
+
+## Инструменты и библиотеки
+
+В проекте используются следующие библиотеки:
+
+- **[React](https://reactjs.org/)**: Библиотека для построения пользовательских интерфейсов.
+- **[React Router](https://reactrouter.com/)**: Для управления маршрутизацией в приложении.
+- **[Axios](https://axios-http.com/)**: Библиотека для выполнения HTTP-запросов.
+- **[MobX](https://mobx.js.org/README.html)**: Реактивное управление состоянием.
+- **[React Toastify](https://fkhadra.github.io/react-toastify/)**: Удобные уведомления для React.
+- **[Vite](https://vite.dev/)**: Инструмент для сборки проекта
