@@ -1,0 +1,35 @@
+.backButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.characterImg {
+  width: 100%;
+  max-height: 400px;
+}
+.characterContent {
+  width: 100%;
+  display: flex;
+}
+.characterInfo {
+  width: 40%;
+}
+.characterDescription {
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+.characterPower {
+  font-size: 16px;
+}
+.comicsList {
+  text-align: left;
+  margin-left: 128px;
+}
+.comicsItem {
+  font-weight: 500;
+  font-size: 16px;
+}
+.comicsItem:hover {
+  color: red;
+}

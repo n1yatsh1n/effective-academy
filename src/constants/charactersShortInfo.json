@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "img": "spiderCard.jpg",
+    "description": "Bitten by a radioactive spider, Peter Parker gained the abilities of a spider and became Spider-Man.",
+    "name": "Spider-Man"
+  },
+  {
+    "id": 2,
+    "img": "ironCard.jpg",
+    "description": "Genius inventor Tony Stark creates a suit of powered armor to save his life and become the superhero Iron Man.",
+    "name": "Iron Man"
+  },
+  {
+    "id": 3,
+    "img": "womenCard.jpg",
+    "description": "Amazonian princess Diana of Themyscira fights for justice as Wonder Woman.",
+    "name": "Wonder Woman"
+  },
+  {
+    "id": 4,
+    "img": "batmanCard.jpg",
+    "description": "Bruce Wayne, a wealthy businessman, fights crime as Batman using his intellect, physical prowess, and an array of gadgets.",
+    "name": "Batman"
+  },
+  {
+    "id": 5,
+    "img": "superCard.jpg",
+    "description": "Born on the planet Krypton, Kal-El was sent to Earth as a baby, where he grew up to become Superman, the world's greatest superhero.",
+    "name": "Superman"
+  }
+]
