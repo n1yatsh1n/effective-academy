@@ -16,7 +16,7 @@ class CharactersStore {
     results: [],
   };
   loading: boolean = false;
-  params: ICharacterSearchParams = {};
+  params: ICharacterSearchParams = { offset: 0 };
 
   constructor() {
     makeAutoObservable(this);
@@ -31,7 +31,8 @@ class CharactersStore {
       const characters = charactersDataWrapper.data.results;
       const characterDataContainer = charactersDataWrapper.data;
       runInAction(() => {
-        this.characters = characters;
+        this.characters = [...this.characters, ...characters];
+        console.log(this.characters.length);
         this.characterDataContainer = characterDataContainer;
       });
     } catch (error) {
