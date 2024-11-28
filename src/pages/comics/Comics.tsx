@@ -4,6 +4,7 @@ import { VirtuosoGrid } from "react-virtuoso";
 import ItemCard from "../../components/itemCard/ItemCard";
 import SearchPanel from "../../components/seachPanel/SearchPanel";
 import comicsStore from "../../store/ComicsStore";
+import { ClipLoader } from "react-spinners";
 
 const Comics: FC = () => {
   const { comics, loading } = comicsStore;
@@ -29,10 +30,16 @@ const Comics: FC = () => {
       </div>
       <SearchPanel placeholder="Search comics" type="comics" />
       {loading && comics.length === 0 ? (
-        <h1>Loading...</h1>
+        <div className="loaderWrapper">
+          <ClipLoader color="red" loading={loading} size={50} />
+        </div>
       ) : (
         <VirtuosoGrid
-          style={{ height: "100vh", marginTop: 20 }}
+          style={{
+            height: "100vh",
+            marginTop: 20,
+            marginBottom: 20,
+          }}
           data={comics}
           endReached={loadMore}
           itemContent={(index, comics) => (
@@ -46,7 +53,12 @@ const Comics: FC = () => {
             />
           )}
           components={{
-            Footer: () => (loading ? <h1>Loading more...</h1> : null),
+            Footer: () =>
+              loading ? (
+                <div className="loaderWrapper">
+                  <ClipLoader color="red" loading={loading} size={50} />
+                </div>
+              ) : null,
           }}
           listClassName="cardContainer"
         />

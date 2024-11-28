@@ -14,3 +14,9 @@ main {
   max-width: 1000px;
   width: 100%;
 }
+.loaderWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

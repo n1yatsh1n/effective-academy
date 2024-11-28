@@ -5,6 +5,7 @@ import ItemCard from "../../components/itemCard/ItemCard";
 import SearchPanel from "../../components/seachPanel/SearchPanel";
 import charactersStore from "../../store/CharactersStore";
 import "./Characters.css";
+import { ClipLoader } from "react-spinners";
 
 const Characters: FC = () => {
   const { characters, loading, getCharactersList } = charactersStore;
@@ -32,12 +33,15 @@ const Characters: FC = () => {
 
       {!loading && characters.length === 0 && <h1>No characters found</h1>}
       {loading && characters.length === 0 ? (
-        <h1>Loading...</h1>
+        <div className="loaderWrapper">
+          <ClipLoader color="red" loading={loading} size={50} />
+        </div>
       ) : (
         <VirtuosoGrid
           style={{
             height: "100vh",
             marginTop: 20,
+            marginBottom: 20,
           }}
           increaseViewportBy={200}
           data={characters}
@@ -53,7 +57,12 @@ const Characters: FC = () => {
             />
           )}
           components={{
-            Footer: () => (loading ? <h1>Loading more...</h1> : null),
+            Footer: () =>
+              loading ? (
+                <div className="loaderWrapper">
+                  <ClipLoader color="red" loading={loading} size={50} />
+                </div>
+              ) : null,
           }}
           listClassName="cardContainer"
         />
