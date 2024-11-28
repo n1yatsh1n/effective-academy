@@ -18,14 +18,18 @@ const SearchPanel = ({ placeholder, type }: SearchPanelProps) => {
     (searchQuery: string): void => {
       if (type === "characters") {
         if (searchQuery) {
+          charactersStore.characters = [];
           charactersStore.params.nameStartsWith = searchQuery;
+          charactersStore.params.offset = 1;
         } else {
           charactersStore.params = {};
         }
         charactersStore.getCharactersList();
       } else if (type === "comics") {
         if (searchQuery) {
+          comicsStore.comics = [];
           comicsStore.params.titleStartsWith = searchQuery;
+          comicsStore.params.offset = 1;
         } else {
           comicsStore.params = {};
         }

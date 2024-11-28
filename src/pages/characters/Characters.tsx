@@ -36,7 +36,7 @@ const Characters: FC = () => {
       ) : (
         <VirtuosoGrid
           style={{
-            height: "70vh",
+            minHeight: 440,
             marginTop: 20,
           }}
           increaseViewportBy={200}

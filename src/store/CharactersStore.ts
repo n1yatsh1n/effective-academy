@@ -32,7 +32,6 @@ class CharactersStore {
       const characterDataContainer = charactersDataWrapper.data;
       runInAction(() => {
         this.characters = [...this.characters, ...characters];
-        console.log(this.characters.length);
         this.characterDataContainer = characterDataContainer;
       });
     } catch (error) {
