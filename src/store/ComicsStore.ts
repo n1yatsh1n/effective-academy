@@ -29,7 +29,7 @@ class ComicsStore {
       const comics = comicsDataWrapper.data.results;
       const comicsDataContainer = comicsDataWrapper.data;
       runInAction(() => {
-        this.comics = comics;
+        this.comics = [...this.comics, ...comics];
         this.comicsDataContainer = comicsDataContainer;
       });
     } catch (error) {

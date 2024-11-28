@@ -1,16 +1,25 @@
-import { FC, useEffect } from "react";
+import { observer } from "mobx-react-lite";
+import { FC, useEffect, useState } from "react";
+import { VirtuosoGrid } from "react-virtuoso";
 import ItemCard from "../../components/itemCard/ItemCard";
 import SearchPanel from "../../components/seachPanel/SearchPanel";
-import { observer } from "mobx-react-lite";
 import comicsStore from "../../store/ComicsStore";
-import Pagination from "../../components/Pagination/Pagination";
 
 const Comics: FC = () => {
-  const { comics, loading, comicsDataContainer } = comicsStore;
+  const { comics, loading } = comicsStore;
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     comicsStore.getComicsList();
   }, []);
+
+  const loadMore = () => {
+    if (!loading) {
+      setOffset(offset + 1);
+      comicsStore.params.offset = offset + 1;
+      comicsStore.getComicsList();
+    }
+  };
 
   return (
     <>
@@ -19,29 +28,28 @@ const Comics: FC = () => {
         <p>({comics.length})</p>
       </div>
       <SearchPanel placeholder="Search comics" type="comics" />
-      {loading ? (
+      {loading && comics.length === 0 ? (
         <h1>Loading...</h1>
       ) : (
-        <>
-          <div className="cardContainer">
-            {comics.map((comics) => (
-              <ItemCard
-                key={comics.id}
-                id={comics.id}
-                name={comics.title}
-                description={comics.description}
-                img={comics.thumbnail.path + "." + comics.thumbnail.extension}
-                type="comics"
-              />
-            ))}
-          </div>
-          <Pagination
-            total={comicsDataContainer.total}
-            limit={comicsDataContainer.limit}
-            offset={comicsDataContainer.offset}
-            type="comics"
-          />
-        </>
+        <VirtuosoGrid
+          style={{ height: "100vh" }}
+          data={comics}
+          endReached={loadMore}
+          itemContent={(index, comics) => (
+            <ItemCard
+              key={comics.id}
+              id={comics.id}
+              name={comics.title}
+              description={comics.description}
+              img={comics.thumbnail.path + "." + comics.thumbnail.extension}
+              type="comics"
+            />
+          )}
+          components={{
+            Footer: () => (loading ? <h1>Loading more...</h1> : null),
+          }}
+          listClassName="cardContainer"
+        />
       )}
     </>
   );
