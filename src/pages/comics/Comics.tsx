@@ -32,7 +32,7 @@ const Comics: FC = () => {
         <h1>Loading...</h1>
       ) : (
         <VirtuosoGrid
-          style={{ height: "100vh" }}
+          style={{ height: "100vh", marginTop: 20 }}
           data={comics}
           endReached={loadMore}
           itemContent={(index, comics) => (
