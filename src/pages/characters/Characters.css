@@ -1,0 +1,16 @@
+.titleWrapper {
+  display: flex;
+}
+.titleWrapper p {
+  color: grey;
+  font-size: 16px;
+  margin-left: 6px;
+}
+.titleWrapper h1 {
+  font-weight: 800;
+}
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+  gap: 20px;
+}

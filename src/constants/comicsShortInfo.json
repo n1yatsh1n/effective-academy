@@ -1,0 +1,62 @@
+[
+  {
+    "id": 101,
+    "name": "Amazing Fantasy",
+    "description": "The debut of Spider-Man, where Peter Parker gains his spider powers.",
+    "img": "amazingFantazy.jpg"
+  },
+  {
+    "id": 102,
+    "name": "The Amazing Spider-Man",
+    "description": "Spider-Man's ongoing adventures as he battles villains and saves New York.",
+    "img": "theAmazingSpiderMan.png"
+  },
+  {
+    "id": 201,
+    "name": "Tales of Suspense",
+    "description": "The introduction of Tony Stark as Iron Man, showcasing his origin story.",
+    "img": "talesOfSuspense.jpg"
+  },
+  {
+    "id": 202,
+    "name": "The Invincible Iron Man",
+    "description": "Iron Man faces off against various threats with his advanced technology and genius intellect.",
+    "img": "theInvincibleIronMan.jpg"
+  },
+  {
+    "id": 301,
+    "name": "All Star Comics",
+    "description": "The debut of Wonder Woman as she joins the Justice Society of America.",
+    "img": "allStarComics.jpg"
+  },
+  {
+    "id": 302,
+    "name": "Wonder Woman",
+    "description": "Wonder Woman's solo adventures as she fights for justice and peace.",
+    "img": "wonderWoman.jpg"
+  },
+  {
+    "id": 401,
+    "name": "Detective Comics",
+    "description": "The first appearance of Batman as he takes on Gotham's criminal underworld.",
+    "img": "detectiveComics.jpeg"
+  },
+  {
+    "id": 402,
+    "name": "Batman",
+    "description": "Batman's solo series, delving into his battles against various villains.",
+    "img": "batman.jpg"
+  },
+  {
+    "id": 501,
+    "name": "Action Comics",
+    "description": "The first appearance of Superman, showcasing his origin and powers.",
+    "img": "actionComics.jpeg"
+  },
+  {
+    "id": 502,
+    "name": "Superman",
+    "description": "Superman's solo adventures as he protects Metropolis and the world.",
+    "img": "superman.jpg"
+  }
+]

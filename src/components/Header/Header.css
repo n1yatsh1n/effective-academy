@@ -1,0 +1,28 @@
+.headerWrapper {
+  width: 100%;
+  background: red;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+}
+.headerContent {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.headerLogo{
+  width: 100px;
+}
+.headerLinks {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 400;
+  font-size: 20px;
+}
+.activeLink {
+  text-decoration: underline;
+  font-weight: 600;
+}
