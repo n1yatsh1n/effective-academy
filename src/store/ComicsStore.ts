@@ -16,7 +16,7 @@ class ComicsStore {
     results: [],
   };
   loading: boolean = false;
-  params: IComicSearchParams = {};
+  params: IComicSearchParams = { offset: 0 };
 
   constructor() {
     makeAutoObservable(this);

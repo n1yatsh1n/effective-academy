@@ -47,9 +47,9 @@ const SearchPanel = ({ placeholder, type }: SearchPanelProps) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (type === "characters") {
-      charactersStore.params.offset = undefined;
+      charactersStore.params.offset = 0;
     } else if (type === "comics") {
-      comicsStore.params.offset = undefined;
+      comicsStore.params.offset = 0;
     }
     setIsChange(true);
     setSearchTerm(e.target.value);
